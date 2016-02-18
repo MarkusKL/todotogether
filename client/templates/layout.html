@@ -1,0 +1,21 @@
+<head>
+  <title>todotogether</title>
+</head>
+
+<template name="layout">
+    <h1>ToDo Together</h1>
+    {{#if currentUser}}
+        {{> logout}} {{currentUser.username}}
+    {{else}}
+        {{> login}}
+    {{/if}}
+    {{> yield}}
+</template>
+
+<template name="loading">
+    Loading...
+</template>
+
+<template name="notFound">
+    Page not found...
+</template>

@@ -1,0 +1,19 @@
+<template name="login">
+    <form id="formLogin">
+        <input type="username" name="username" class="inputUsername" placeholder="Brugernavn"><br/>
+        <input type="password" name="password" class="inputPassword" placeholder="Kodeord"><br/>
+        <span class="modeCreateOnly">
+            <input type="password" name="passwordConfirm" class="inputPasswordConfirm" placeholder="Kodeord igen">
+            <br/>
+        </span>
+        <button class="buttonLogin modeLoginOnly">Log ind</button>
+        <button class="buttonCreateMode modeLoginOnly">Opret bruger</button>
+        <button class="buttonCreate modeCreateOnly">Opret</button>
+        <button class="buttonCancel modeCreateOnly">Anuller</button>
+        <input type="hidden" name="mode" value="login">
+    </form>
+</template>
+
+<template name="logout">
+    <button class="buttonLogout">Log ud</button>
+</template>

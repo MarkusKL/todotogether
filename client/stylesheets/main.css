@@ -1,0 +1,9 @@
+
+.modeCreateOnly {
+    display: none;
+}
+
+.list-item {
+    border: 3px double black;
+    margin-bottom: -3px;
+}
