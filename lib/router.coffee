@@ -8,4 +8,6 @@ Router.route '/', name: 'main'
 Router.route '/list/:_id',
     name: 'list'
     data: ->
-        Lists.findOne(this.params._id)
+        list: Lists.findOne this.params._id
+        items: Items.find
+            listId: this.params._id

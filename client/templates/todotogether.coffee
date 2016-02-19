@@ -1,25 +1,11 @@
 
 Template.content.helpers
-    items: -> Items.find()
     lists: -> Lists.find()
 
 Template.content.events
-    'submit #formAdd': (e) ->
-        e.preventDefault()
-        input = $('.textInput')
-        Items.insert
-            text: input.val()
-            creator: Meteor.userId()
-        input.val("")
-
     'click .buttonRemoveAll': (e) ->
         e.preventDefault()
         Meteor.call("removeAll")
-
-    'click .removeItem': (e) ->
-        id = e.currentTarget.dataset.id
-        Items.remove
-            _id: id
 
     'submit #formNewList': (e) ->
         e.preventDefault()
@@ -38,7 +24,24 @@ Template.item.helpers
     checkedState: ->
         return this.checked? "checked" : ""
 
+
+Template.itemList.events
+    'submit #formAdd': (e) ->
+        e.preventDefault()
+        form = $ '#formAdd'
+        text = form.find '[name=text]'
+        Items.insert
+            text: text.val()
+            creator: Meteor.userId()
+            listId: this.list._id
+        text.val("")
+
 Template.item.events
+    'click .removeItem': (e) ->
+        id = e.currentTarget.dataset.id
+        Items.remove
+            _id: this._id
+
     'click input': (e) ->
         state = e.currentTarget.checked
         Items.update {

@@ -5,15 +5,7 @@
 </template>
 
 <template name="content">
-    <ul style="width: 300px;">
-    {{#each items}}
-        {{> item}}
-    {{/each}}
-    </ul>
-    <form id="formAdd">
-        <input type="text" class="textInput">
-        <button class="buttonAdd">+</button>
-    </form>
+
     <button class="buttonRemoveAll">Fjern alle</button>
 
     <h3>Dine lister:</h3>
@@ -29,14 +21,4 @@
         <input type="text" name="name" placeholder="Giv din nye liste et navn...">
         <button type="submit">Opret</button>
     </form>
-</template>
-
-<template name="item">
-    <li class="list-item">
-        <input type="checkbox" {{checkedState}}>
-        {{creatorUsername}}: {{text}}
-        <span class="removeItem" style="float: right;cursor: pointer;" data-id="{{_id}}">
-            x
-        </span>
-    </li>
 </template>

@@ -1,5 +1,28 @@
 <template name="list">
     <h2> List Template </h2>
     <a href="/"> Tilbage </a><br/>
-    {{_id}}
+    {{list._id}}
+    {{> itemList}}
+</template>
+
+<template name="itemList">
+    <ul style="width: 300px;">
+    {{#each items}}
+        {{> item}}
+    {{/each}}
+    </ul>
+    <form id="formAdd">
+        <input type="text" name="text">
+        <button type="submit">+</button>
+    </form>
+</template>
+
+<template name="item">
+    <li class="list-item">
+        <input type="checkbox" {{checkedState}}>
+        {{creatorUsername}}: {{text}}
+        <span class="removeItem" style="float: right;cursor: pointer;">
+            x
+        </span>
+    </li>
 </template>

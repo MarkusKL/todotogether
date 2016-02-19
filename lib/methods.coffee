@@ -1,3 +1,5 @@
 
 Meteor.methods
-    'removeAll': -> Items.remove({});
+    'removeAll': ->
+        Items.remove({})
+        Lists.remove({})
