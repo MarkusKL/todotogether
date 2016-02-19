@@ -1,6 +1,7 @@
 
 Template.content.helpers
     items: -> Items.find()
+    lists: -> Lists.find()
 
 Template.content.events
     'submit #formAdd': (e) ->
@@ -19,6 +20,17 @@ Template.content.events
         id = e.currentTarget.dataset.id
         Items.remove
             _id: id
+
+    'submit #formNewList': (e) ->
+        e.preventDefault()
+        form = $ '#formNewList'
+        name = form.find '[name=name]'
+        if !name
+            return
+        Lists.insert
+            name: name.val()
+            creator: Meteor.userId()
+        name.val ""
 
 Template.item.helpers
     creatorUsername: ->
