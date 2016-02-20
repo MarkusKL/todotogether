@@ -1,10 +1,10 @@
 <template name="list">
     <h2> Listen {{list.name}} </h2>
     <a href="/"> Tilbage </a><br/>
-    {{> itemList}}
+    {{> itemsList}}
 </template>
 
-<template name="itemList">
+<template name="itemsList">
     <ul style="width: 300px;">
     {{#each items}}
         {{> item}}
@@ -19,7 +19,7 @@
 <template name="item">
     <li class="list-item">
         <input type="checkbox" {{checkedState}}>
-        {{creatorUsername}}: {{text}}
+        {{text}}
         <span class="removeItem" style="float: right;cursor: pointer;">
             x
         </span>

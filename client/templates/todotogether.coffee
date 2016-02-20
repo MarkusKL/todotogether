@@ -1,12 +1,8 @@
 
-Template.content.helpers
+Template.listsList.helpers
     lists: -> Lists.find()
 
 Template.content.events
-    'click .buttonRemoveAll': (e) ->
-        e.preventDefault()
-        Meteor.call("removeAll")
-
     'submit #formNewList': (e) ->
         e.preventDefault()
         form = $ '#formNewList'

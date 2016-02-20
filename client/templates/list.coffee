@@ -1,15 +1,12 @@
 
 Template.item.helpers
-    creatorUsername: ->
-        Meteor.users.findOne(this.creator).username if this.creator?
     checkedState: ->
         if this.checked
             "checked"
         else
             ""
 
-
-Template.itemList.events
+Template.itemsList.events
     'submit #formAdd': (e) ->
         e.preventDefault()
         form = $ '#formAdd'
