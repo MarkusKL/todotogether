@@ -9,7 +9,5 @@ Template.content.events
         name = form.find '[name=name]'
         if !name.val()
             return
-        Lists.insert
-            name: name.val()
-            creator: Meteor.userId()
+        Meteor.call "createList", name.val()
         name.val ""
