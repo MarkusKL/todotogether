@@ -3,7 +3,10 @@ Template.item.helpers
     creatorUsername: ->
         Meteor.users.findOne(this.creator).username if this.creator?
     checkedState: ->
-        return this.checked? "checked" : ""
+        if this.checked
+            "checked"
+        else
+            ""
 
 
 Template.itemList.events
