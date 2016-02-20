@@ -5,9 +5,11 @@ Meteor.methods
         Lists.insert
             name: name
             creator: Meteor.userId()
+            access: [Meteor.userId()]
 
     "addItem": (listId, text) ->
-        check listId, String # Check permission to list
+        check listId, String
+        checkListAccess(listId)
         check text, String
         Items.insert
             text: text
@@ -15,13 +17,15 @@ Meteor.methods
             listId: listId
 
     "removeItem": (itemId) ->
-        check itemId, String # Check permission to list
+        check itemId, String
+        checkListAccess(findListId(itemId))
         Items.remove
             _id: itemId
 
     "checkItem": (itemId, state) ->
-        check itemId, String # Check permission to list
+        check itemId, String
         check state, Boolean
+        checkListAccess(findListId(itemId))
         Items.update {
             _id: itemId
         }, {
@@ -29,3 +33,16 @@ Meteor.methods
                 checked: state
             }
         }
+
+findListId = (itemId) ->
+    Items.findOne({
+        _id: itemId
+    }, {
+        listId: 1
+    }).listId
+
+checkListAccess = (listId) ->
+    list = Lists.findOne
+        _id: listId
+        access: $all: [Meteor.userId()]
+    check list, Object
