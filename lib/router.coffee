@@ -2,6 +2,8 @@ Router.configure
     layoutTemplate: "layout",
     loadingTemplate: "loading",
     notFoundTemplate: "notFound"
+    waitOn: ->
+        Meteor.subscribe "me"
 
 Router.route '/',
     name: 'main'

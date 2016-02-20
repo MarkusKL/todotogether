@@ -9,3 +9,13 @@ Meteor.publish "list", (listId) ->[
     Items.find
         listId: listId
 ]
+
+Meteor.publish "me", ->
+    if this.userId
+        Meteor.users.find {
+            _id: this.userId
+        }, {
+            _id: 1
+        }
+    else
+        return []
