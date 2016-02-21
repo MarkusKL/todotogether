@@ -2,6 +2,11 @@
     <h2> Listen {{list.name}} </h2>
     <a href="/"> Tilbage </a><br/>
     {{> itemsList}}
+    <h3> Giv andre adgang </h3>
+    <form id="formGiveAccess">
+        <input type="text" name="username" placeholder="Brugernavn">
+        <button type="submit">Giv adgang</button>
+    </form>
 </template>
 
 <template name="itemsList">

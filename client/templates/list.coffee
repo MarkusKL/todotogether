@@ -25,3 +25,15 @@ Template.item.events
     'click input': (e) ->
         state = e.currentTarget.checked
         Meteor.call "checkItem", this._id, state
+
+Template.list.events
+    'submit #formGiveAccess': (e) ->
+        e.preventDefault()
+        form = $ '#formGiveAccess'
+        username = form.find '[name=username]'
+        if !username.val()
+            return
+        Meteor.call "giveAccess",
+            this.list._id,
+            username.val()
+        username.val ""

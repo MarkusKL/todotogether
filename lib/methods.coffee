@@ -34,6 +34,19 @@ Meteor.methods
             }
         }
 
+    "giveAccess": (listId, username) ->
+        check listId, String
+        check username, String
+        user = Accounts.findUserByUsername username
+        check user, Object
+
+        Lists.update {
+            _id: listId
+            creator: Meteor.userId()
+        }, {
+            $addToSet: access: user._id
+        }
+
 findListId = (itemId) ->
     Items.findOne({
         _id: itemId
