@@ -1,7 +1,10 @@
 
 Meteor.publish "lists", ->
-    Lists.find
-        access: $all: [this.userId]
+    if this.userId
+        return Lists.find
+            access: $all: [this.userId]
+    else
+        return []
 
 Meteor.publish "list", (listId) ->
     list = Lists.findOne {
@@ -10,7 +13,8 @@ Meteor.publish "list", (listId) ->
     }, {
         access: 1
     } # No update
-    check list, Object # Manage subscription denial better
+    if !list
+        return []
     [
         Lists.find
             _id: listId,
@@ -25,7 +29,7 @@ Meteor.publish "list", (listId) ->
 
 Meteor.publish "me", ->
     if this.userId
-        Meteor.users.find {
+        return Meteor.users.find {
             _id: this.userId
         }, {
             _id: 1

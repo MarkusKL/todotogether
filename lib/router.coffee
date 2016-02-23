@@ -19,3 +19,13 @@ Router.route '/list/:_id',
         items: Items.find
             listId: this.params._id
         users: Meteor.users.find()
+
+requireLogin = ->
+    if Meteor.loggingIn()
+        this.render(this.loadingTemplate())
+    else if not Meteor.userId()
+        this.router.go('main')
+    this.next()
+
+Router.onBeforeAction requireLogin,
+    except: ['main']
