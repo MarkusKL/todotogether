@@ -37,3 +37,7 @@ Template.list.events
             this.list._id,
             username.val()
         username.val ""
+
+Template.list.helpers
+    'isCreator': ->
+        this.list.creator is Meteor.userId()

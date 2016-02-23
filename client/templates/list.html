@@ -3,10 +3,18 @@
     <a href="/"> Tilbage </a><br/>
     {{> itemsList}}
     <h3> Giv andre adgang </h3>
-    <form id="formGiveAccess">
-        <input type="text" name="username" placeholder="Brugernavn">
-        <button type="submit">Giv adgang</button>
-    </form>
+    Andre med adgang:
+    <ul>
+        {{#each users}}
+            <li>{{username}}</li>
+        {{/each}}
+    </ul>
+    {{#if isCreator}}
+        <form id="formGiveAccess">
+            <input type="text" name="username" placeholder="Brugernavn">
+            <button type="submit">Giv adgang</button>
+        </form>
+    {{/if}}
 </template>
 
 <template name="itemsList">

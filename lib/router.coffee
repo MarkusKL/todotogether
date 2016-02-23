@@ -18,3 +18,4 @@ Router.route '/list/:_id',
         list: Lists.findOne this.params._id
         items: Items.find
             listId: this.params._id
+        users: Meteor.users.find()

@@ -4,15 +4,23 @@ Meteor.publish "lists", ->
         access: $all: [this.userId]
 
 Meteor.publish "list", (listId) ->
-    list = Lists.findOne
+    list = Lists.findOne {
         _id: listId
         access: $all: [this.userId]
+    }, {
+        access: 1
+    } # No update
     check list, Object # Manage subscription denial better
     [
         Lists.find
             _id: listId,
         Items.find
-            listId: listId
+            listId: listId,
+        Meteor.users.find({
+            _id: $in: list.access
+        }, {
+            username: 1
+        })
     ]
 
 Meteor.publish "me", ->
