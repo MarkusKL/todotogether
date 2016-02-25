@@ -1,7 +1,11 @@
 
-<template name="main">
+<template name="front">
     <h2>Main page</h2>
-    {{> content}}
+    {{#if currentUser}}
+        {{> content}}
+    {{else}}
+        Velkommen til ToDo Together
+    {{/if}}
 </template>
 
 <template name="content">

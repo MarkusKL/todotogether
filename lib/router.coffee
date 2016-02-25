@@ -6,7 +6,7 @@ Router.configure
         Meteor.subscribe "me"
 
 Router.route '/',
-    name: 'main'
+    name: 'front'
     waitOn: ->
         Meteor.subscribe "lists"
 
@@ -22,10 +22,10 @@ Router.route '/list/:_id',
 
 requireLogin = ->
     if Meteor.loggingIn()
-        this.render(this.loadingTemplate())
+        this.render this.loadingTemplate
     else if not Meteor.userId()
-        this.router.go('main')
+        this.router.go('/')
     this.next()
 
 Router.onBeforeAction requireLogin,
-    except: ['main']
+    except: ['/']
