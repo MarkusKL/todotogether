@@ -18,6 +18,19 @@ Template.itemsList.events
             text.val()
         text.val("")
 
+Template.itemsList.onRendered ->
+    this.find('.wrapper')._uihooks =
+        insertElement: (node, next) ->
+            $(node)
+                .hide()
+                .insertBefore(next)
+                .fadeIn()
+        removeElement: (node) ->
+            $(node).animate({opacity: 0,marginLeft: "100px"}, ->
+                el = $ this
+                el.animate({marginTop: (-el.outerHeight(true))+"px"}, ->
+                    el.remove()))
+
 Template.item.events
     'click .removeItem': (e) ->
         Meteor.call "removeItem", this._id
