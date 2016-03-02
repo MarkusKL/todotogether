@@ -12,19 +12,14 @@ Meteor.publish "list", (listId) ->
         access: $all: [this.userId]
     }, {
         access: 1
-    } # No update
+    }
     if !list
         return []
     [
         Lists.find
             _id: listId,
         Items.find
-            listId: listId,
-        Meteor.users.find({
-            _id: $in: list.access
-        }, {
-            username: 1
-        })
+            listId: listId
     ]
 
 Meteor.publish "me", ->
@@ -36,3 +31,11 @@ Meteor.publish "me", ->
         }
     else
         return []
+
+Meteor.publish "userInfo", (userId) ->
+    check userId, String
+    return Meteor.users.find {
+        _id: userId
+    }, {
+        username: 1
+    }
