@@ -39,6 +39,21 @@ Template.item.events
         state = e.currentTarget.checked
         Meteor.call "checkItem", this._id, state
 
+    'click span.itemText': (e) ->
+        inst = Template.instance()
+        inst.$('.itemText').toggle()
+        inst.$('input.itemText').focus()
+
+    'blur input.itemText': (e) ->
+        inst = Template.instance()
+        inst.$('.itemText').toggle()
+        text = inst.$('input.itemText')
+        Meteor.call "changeItemText", this._id, text.val()
+
+    'keypress input.itemText': (e) ->
+        if e.which is 13 or e.keyCode is 13
+            Template.instance().$('input.itemText').blur()
+
 Template.list.events
     'submit #formGiveAccess': (e) ->
         e.preventDefault()

@@ -24,6 +24,17 @@ Meteor.methods
             creator: Meteor.userId()
             listId: listId
 
+    "changeItemText": (itemId, text) ->
+        check itemId, String
+        check Meteor.userId(), String
+        checkListAccess findListId itemId
+        check text, String
+        Items.update {
+            _id: itemId
+        }, {
+            $set: text: text
+        }
+
     "removeItem": (itemId) ->
         check itemId, String
         check Meteor.userId(), String

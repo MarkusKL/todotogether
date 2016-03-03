@@ -32,7 +32,8 @@
 <template name="item">
     <li class="list-item">
         <input type="checkbox" {{checkedState}}>
-        {{text}}
+        <span class="itemText">{{text}}</span>
+        <input style="display: none;" class="itemText" value="{{text}}">
         <span class="removeItem" style="float: right;cursor: pointer;">
             x
         </span>
