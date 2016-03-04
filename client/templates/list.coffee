@@ -81,4 +81,7 @@ Template.userItem.onCreated ->
 
 Template.userItem.helpers
     'username': ->
-        Meteor.users.find(this.valueOf()).fetch()[0].username
+        usr = Meteor.users.find(this.valueOf()).fetch()
+        if usr.length > 0
+            return usr[0].username
+        return undefined
