@@ -6,7 +6,7 @@
 </template>
 
 <template name="itemsList">
-    <ul style="width: 300px;" class="wrapper">
+    <ul style="width: 400px;" class="wrapper">
     {{#each items}}
         {{> item}}
     {{/each}}
@@ -20,7 +20,9 @@
 <template name="item">
     <li class="list-item">
         <input type="checkbox" {{checkedState}}>
-        <input style="border: 0px; width: 200px;" class="itemText" value="{{text}}">
+        <input style="border: 0; width: 32px;" class="priorityInput" value="{{priority}}">
+            :
+        <input style="border: 0; width: 256px;" class="itemText" value="{{text}}">
         <span class="removeItem" style="float: right;cursor: pointer;">
             x
         </span>

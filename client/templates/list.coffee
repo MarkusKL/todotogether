@@ -47,6 +47,19 @@ Template.item.events
         if e.which is 13 or e.keyCode is 13
             Template.instance().$('input.itemText').blur()
 
+    'blur input.priorityInput': (e) ->
+        priority = Template.instance().$('input.priorityInput');
+        num = priority.val()
+        if num
+            num = Number(num)
+        Meteor.call "setPriority", this._id, num, (err) ->
+            if err
+                priority.val(this.priority)
+
+    'keypress input.priorityInput': (e) ->
+        if e.which is 13 or e.keyCode is 13
+            Template.instance().$('input.itemText').blur()
+
 Template.list.events
     'submit #formGiveAccess': (e) ->
         e.preventDefault()

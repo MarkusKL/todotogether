@@ -35,6 +35,17 @@ Meteor.methods
             $set: text: text
         }
 
+    "setPriority": (itemId, priority) ->
+        check itemId, String
+        check Meteor.userId(), String
+        checkListAccess findListId itemId
+        check priority, Match.OneOf(undefined,Match.Integer)
+        Items.update {
+            _id: itemId
+        }, {
+            $set: priority: priority
+        }
+
     "removeItem": (itemId) ->
         check itemId, String
         check Meteor.userId(), String
