@@ -2,19 +2,7 @@
     <h2> Listen {{list.name}} </h2>
     <a href="/"> Tilbage </a><br/>
     {{> itemsList}}
-    <h3> Giv andre adgang </h3>
-    Andre med adgang:
-    <ul>
-        {{#each users}}
-            <li>{{username}}</li>
-        {{/each}}
-    </ul>
-    {{#if isCreator}}
-        <form id="formGiveAccess">
-            <input type="text" name="username" placeholder="Brugernavn">
-            <button type="submit">Giv adgang</button>
-        </form>
-    {{/if}}
+    {{> accessList}}
 </template>
 
 <template name="itemsList">
@@ -38,4 +26,24 @@
             x
         </span>
     </li>
+</template>
+
+<template name="accessList">
+    <h3> Giv andre adgang </h3>
+    Andre med adgang:
+    <ul>
+        {{#each list.access}}
+            {{> userItem}}
+        {{/each}}
+    </ul>
+    {{#if isCreator}}
+        <form id="formGiveAccess">
+            <input type="text" name="username" placeholder="Brugernavn">
+            <button type="submit">Giv adgang</button>
+        </form>
+    {{/if}}
+</template>
+
+<template name="userItem">
+    <li>{{username}}</li>
 </template>

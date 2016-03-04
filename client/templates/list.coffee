@@ -66,6 +66,13 @@ Template.list.events
             username.val()
         username.val ""
 
-Template.list.helpers
+Template.accessList.helpers
     'isCreator': ->
         this.list.creator is Meteor.userId()
+
+Template.userItem.onCreated ->
+    this.subscribe "userInfo", this.data
+
+Template.userItem.helpers
+    'username': ->
+        Meteor.users.find(this.valueOf()).fetch()[0].username
