@@ -26,7 +26,7 @@ Template.itemsList.onRendered ->
                 .insertBefore(next)
                 .fadeIn()
         removeElement: (node) ->
-            $(node).animate({opacity: 0,marginLeft: "100px"}, ->
+            $(node).animate({opacity: 0,marginLeft: "50px"}, ->
                 el = $ this
                 el.animate({marginTop: (-el.outerHeight(true))+"px"}, ->
                     el.remove()))
@@ -39,15 +39,8 @@ Template.item.events
         state = e.currentTarget.checked
         Meteor.call "checkItem", this._id, state
 
-    'click span.itemText': (e) ->
-        inst = Template.instance()
-        inst.$('.itemText').toggle()
-        inst.$('input.itemText').focus()
-
     'blur input.itemText': (e) ->
-        inst = Template.instance()
-        inst.$('.itemText').toggle()
-        text = inst.$('input.itemText')
+        text = Template.instance().$('input.itemText')
         Meteor.call "changeItemText", this._id, text.val()
 
     'keypress input.itemText': (e) ->
