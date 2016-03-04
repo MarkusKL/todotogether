@@ -67,6 +67,9 @@ Meteor.methods
         }
 
     "giveAccess": (listId, username) ->
+        if not Meteor.isServer
+            return; # Does not make sense to simulate on the client
+            # Maybe this is an anti-pattern?
         check listId, String
         check username, String
         check Meteor.userId(), String
@@ -80,18 +83,17 @@ Meteor.methods
             $addToSet: access: user._id
         }
 
-    "revokeAccess": (listId, username) ->
+    "revokeAccess": (listId, userId) ->
         check listId, String
-        check username, String
+        check userId, String
         check Meteor.userId(), String
-        user = Accounts.findByUsername username
-        check user, Object
-
+        if userId == Meteor.userId()
+            throw new Meteor.Error(403, "Can not revoke the list creators access")
         Lists.update {
             _id: listId
             creator: Meteor.userId()
         }, {
-            $pull: user._id
+            $pull: access: userId
         }
 
 findListId = (itemId) ->

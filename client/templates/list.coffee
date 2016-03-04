@@ -85,3 +85,11 @@ Template.userItem.helpers
         if usr.length > 0
             return usr[0].username
         return undefined
+
+Template.userItem.events
+    'click li': ->
+        Meteor.call(
+            "revokeAccess",
+            Template.parentData().list._id,
+            Template.currentData()
+        )
