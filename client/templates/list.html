@@ -19,10 +19,10 @@
 
 <template name="item">
     <li class="list-item animate">
-        <input type="checkbox" {{checkedState}}>
-        <input style="border: 0; width: 32px;" class="priorityInput" value="{{priority}}">
+        <input class="checkInput" type="checkbox" {{checkedState}}>
+        <input class="priorityInput" value="{{priority}}">
             :
-        <input style="border: 0; width: 256px;" class="itemText" value="{{text}}">
+        <input class="itemText" value="{{text}}">
         <span class="removeItem" style="float: right;cursor: pointer;">
             x
         </span>

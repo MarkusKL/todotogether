@@ -44,7 +44,7 @@ Template.itemsList.onRendered ->
 
             $inBetween
                 .removeClass('animate')
-                .css('top', if oldTop < newTop then  height else -1*height)
+                .css('top', if oldTop < newTop then height else -1*height)
 
             $node.offset()
 
@@ -62,7 +62,7 @@ Template.item.events
     'click .removeItem': (e) ->
         Meteor.call "removeItem", this._id
 
-    'click input': (e) ->
+    'click input.checkInput': (e) ->
         state = e.currentTarget.checked
         Meteor.call "checkItem", this._id, state
 

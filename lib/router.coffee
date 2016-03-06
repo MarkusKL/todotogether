@@ -19,7 +19,7 @@ Router.route '/list/:_id',
         items: Items.find {
             listId: this.params._id
         }, {
-            sort: [["priority","desc"],["created","asc"]]
+            sort: [["checked","asc"],["priority","desc"],["created","asc"]]
         }
         users: Meteor.users.find()
 

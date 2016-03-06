@@ -8,6 +8,16 @@
     margin-bottom: -3px;
     position: relative;
 }
-.list-item.animate{
+.list-item.animate {
     transition:all 300ms 0ms ease-in-out;
+}
+
+.priorityInput {
+    border: 0;
+    width: 32px;
+}
+
+.itemText {
+    border: 0;
+    width: 256px;
 }
