@@ -6,4 +6,8 @@
 .list-item {
     border: 3px double black;
     margin-bottom: -3px;
+    position: relative;
+}
+.list-item.animate{
+    transition:all 300ms 0ms ease-in-out;
 }

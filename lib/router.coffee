@@ -16,8 +16,11 @@ Router.route '/list/:_id',
         Meteor.subscribe "list", this.params._id
     data: ->
         list: Lists.findOne this.params._id
-        items: Items.find
+        items: Items.find {
             listId: this.params._id
+        }, {
+            sort: [["priority","desc"],["created","asc"]]
+        }
         users: Meteor.users.find()
 
 requireLogin = ->

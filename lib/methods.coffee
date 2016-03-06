@@ -22,7 +22,8 @@ Meteor.methods
         Items.insert
             text: text
             creator: Meteor.userId()
-            listId: listId
+            listId: listId,
+            created: new Date()
 
     "changeItemText": (itemId, text) ->
         check itemId, String
@@ -39,7 +40,11 @@ Meteor.methods
         check itemId, String
         check Meteor.userId(), String
         checkListAccess findListId itemId
-        check priority, Match.OneOf(undefined,Match.Integer)
+        if Match.test priority, String
+            priority = undefined
+        else
+            check priority, Number
+
         Items.update {
             _id: itemId
         }, {

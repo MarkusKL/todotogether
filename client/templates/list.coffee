@@ -25,11 +25,38 @@ Template.itemsList.onRendered ->
                 .hide()
                 .insertBefore(next)
                 .fadeIn()
+        moveElement: (node, next) ->
+            $node = $ node
+            $next = $ next
+            oldTop = $node.offset().top
+            height = $node.outerHeight(true)
+
+            $inBetween = $next.nextUntil(node)
+            if $inBetween.length is 0
+                $inBetween = $node.nextUntil(next)
+
+            $node.insertBefore(next)
+            newTop = $node.offset().top
+
+            $node
+                .removeClass('animate')
+                .css('top', oldTop - newTop)
+
+            $inBetween
+                .removeClass('animate')
+                .css('top', if oldTop < newTop then  height else -1*height)
+
+            $node.offset()
+
+            $node.addClass('animate').css('top',0)
+            $inBetween.addClass('animate').css('top',0)
+
         removeElement: (node) ->
-            $(node).animate({opacity: 0,marginLeft: "50px"}, ->
-                el = $ this
-                el.animate({marginTop: (-el.outerHeight(true))+"px"}, ->
-                    el.remove()))
+            $node = $ node
+            $node.removeClass("animate")
+            $node.animate({opacity: 0,left: "50px"}, ->
+                $node.animate({marginTop: (-$node.outerHeight(true))+"px"}, ->
+                    $node.remove()))
 
 Template.item.events
     'click .removeItem': (e) ->
@@ -52,13 +79,15 @@ Template.item.events
         num = priority.val()
         if num
             num = Number(num)
+            if isNaN(num)
+                num = ""
         Meteor.call "setPriority", this._id, num, (err) ->
             if err
                 priority.val(this.priority)
 
     'keypress input.priorityInput': (e) ->
         if e.which is 13 or e.keyCode is 13
-            Template.instance().$('input.itemText').blur()
+            Template.instance().$('input.priorityInput').blur()
 
 Template.list.events
     'submit #formGiveAccess': (e) ->
