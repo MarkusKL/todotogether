@@ -32,8 +32,8 @@ Template.itemsList.onRendered ->
             height = $node.outerHeight(true)
 
             $inBetween = $next.nextUntil(node)
-            if $inBetween.length is 0
-                $inBetween = $node.nextUntil(next)
+            if $node.index() < $next.index()
+                $inBetween = $next.prevUntil(node)
 
             $node.insertBefore(next)
             newTop = $node.offset().top
