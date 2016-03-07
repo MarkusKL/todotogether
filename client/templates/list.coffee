@@ -101,6 +101,10 @@ Template.list.events
             username.val()
         username.val ""
 
+    'click .deleteListButton': (e) ->
+        Meteor.call "deleteList", this.list._id
+        Router.go('/') # Antipattern?
+
 Template.accessList.helpers
     'isCreator': ->
         this.list.creator is Meteor.userId()

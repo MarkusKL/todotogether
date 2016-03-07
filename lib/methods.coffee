@@ -13,6 +13,8 @@ Meteor.methods
         Lists.remove
             _id: listId,
             creator: Meteor.userId()
+        Items.remove
+            listId: listId
 
     "addItem": (listId, text) ->
         check listId, String
