@@ -2,7 +2,7 @@
 Template.listsList.helpers
     lists: -> Lists.find()
 
-Template.content.events
+Template.formCreateList.events
     'submit #formNewList': (e) ->
         e.preventDefault()
         form = $ '#formNewList'

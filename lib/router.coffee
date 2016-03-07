@@ -9,11 +9,11 @@ Router.route '/',
     name: 'front'
     onBeforeAction: ->
         if(Meteor.user() || Meteor.loggingIn())
-            this.redirect('/lists')
+            this.redirect('/home')
         this.next()
 
-Router.route '/lists',
-    name: 'content'
+Router.route '/home',
+    name: 'home'
     waitOn: ->
         Meteor.subscribe "lists"
 

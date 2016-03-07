@@ -4,24 +4,3 @@
     Velkommen til ToDo Together
     {{> formLogin}}
 </template>
-
-<template name="content">
-    <h3>Dine lister:</h3>
-
-    {{> listsList}}
-
-    <h3>Ny liste:</h3>
-    <form id="formNewList">
-        <input type="text" name="name" placeholder="Giv din nye liste et navn...">
-        <button type="submit">Opret</button>
-    </form>
-    {{> formLogout}}
-</template>
-
-<template name="listsList">
-    <ul>
-    {{#each lists}}
-        <a href="/list/{{_id}}"><li>{{name}}</li></a>
-    {{/each}}
-    </ul>
-</template>

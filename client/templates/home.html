@@ -1,0 +1,21 @@
+
+<template name="home">
+    <h3>Dine lister:</h3>
+
+    {{> listsList}}
+
+    <h3>Ny liste:</h3>
+    <div style="max-width: 300px;">
+        {{> formCreateList}}
+    </div>
+    <br>
+    {{> formLogout}}
+</template>
+
+<template name="listsList">
+    <ul>
+    {{#each lists}}
+        <a href="/list/{{_id}}"><li>{{name}}</li></a>
+    {{/each}}
+    </ul>
+</template>
