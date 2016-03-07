@@ -2,7 +2,9 @@
 <template name="home">
     <h3>Dine lister:</h3>
 
-    {{> listsList}}
+    <div style="max-width: 300px">
+        {{> listsList}}
+    </div>
 
     <h3>Ny liste:</h3>
     <div style="max-width: 300px;">
@@ -13,9 +15,12 @@
 </template>
 
 <template name="listsList">
-    <ul>
+    <div class="list-group">
     {{#each lists}}
-        <a href="/list/{{_id}}"><li>{{name}}</li></a>
+        <a href="/list/{{_id}}" class="list-group-item">
+            {{name}}
+            <span class="badge"><span class="glyphicon glyphicon-chevron-right"></span></span>
+        </a>
     {{/each}}
-    </ul>
+</div>
 </template>
