@@ -1,11 +1,8 @@
 
 <template name="front">
     <h2>Main page</h2>
-    {{#if currentUser}}
-        {{> content}}
-    {{else}}
-        Velkommen til ToDo Together
-    {{/if}}
+    Velkommen til ToDo Together
+    {{> login}}
 </template>
 
 <template name="content">
@@ -18,6 +15,7 @@
         <input type="text" name="name" placeholder="Giv din nye liste et navn...">
         <button type="submit">Opret</button>
     </form>
+    {{> logout}}
 </template>
 
 <template name="listsList">

@@ -7,6 +7,13 @@ Router.configure
 
 Router.route '/',
     name: 'front'
+    onBeforeAction: ->
+        if(Meteor.user() || Meteor.loggingIn())
+            this.redirect('/lists')
+        this.next()
+
+Router.route '/lists',
+    name: 'content'
     waitOn: ->
         Meteor.subscribe "lists"
 

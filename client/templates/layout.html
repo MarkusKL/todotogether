@@ -1,15 +1,11 @@
 <head>
-  <title>todotogether</title>
+  <title>ToDo Together</title>
 </head>
 
 <template name="layout">
-    <h1>ToDo Together</h1>
-    {{#if currentUser}}
-        {{> logout}} {{currentUser.username}}
-    {{else}}
-        {{> login}}
-    {{/if}}
-    {{> yield}}
+    <div class="container">
+        {{> yield}}
+    </div>
 </template>
 
 <template name="loading">
