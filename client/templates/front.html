@@ -2,7 +2,7 @@
 <template name="front">
     <h2>Main page</h2>
     Velkommen til ToDo Together
-    {{> login}}
+    {{> formLogin}}
 </template>
 
 <template name="content">
@@ -15,7 +15,7 @@
         <input type="text" name="name" placeholder="Giv din nye liste et navn...">
         <button type="submit">Opret</button>
     </form>
-    {{> logout}}
+    {{> formLogout}}
 </template>
 
 <template name="listsList">
