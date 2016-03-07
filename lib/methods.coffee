@@ -23,7 +23,8 @@ Meteor.methods
             text: text
             creator: Meteor.userId()
             listId: listId,
-            created: new Date()
+            created: new Date(),
+            checked: false
 
     "changeItemText": (itemId, text) ->
         check itemId, String
