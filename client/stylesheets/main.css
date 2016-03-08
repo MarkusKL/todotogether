@@ -1,6 +1,6 @@
 body {
     min-height: 100%;
-    background-color: #DDD;
+    background-color: #e7e7e7;
 }
 
 .modeCreateOnly {
@@ -23,4 +23,8 @@ body {
 .itemText {
     border: 0;
     width: 256px;
+}
+
+.navbar-hover:hover {
+    background-color: #DDD;
 }

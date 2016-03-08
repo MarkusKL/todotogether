@@ -3,6 +3,9 @@
 </head>
 
 <template name="layout">
+    {{#if currentUser}}
+        {{> navbar}}
+    {{/if}}
     <div class="container">
         {{> yield}}
     </div>
@@ -14,4 +17,34 @@
 
 <template name="notFound">
     Page not found...
+</template>
+
+<template name="navbar">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/home">
+                    {{> ToDoTogether}}
+                </a>
+            </div>
+            <ul class="nav navbar-nav navbar-left">
+                <li class="navbar-hover {{isRoute 'home'}}">
+                    <a href="/home">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="navbar-hover">
+                    <a href='#'>
+                        {{currentUser.username}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</template>
+
+<template name="ToDoTogether">
+    <span style="color: #3a3">To</span><span style="color: #a33;">Do</span> <span style="color: #3a3;">Together</span>
 </template>

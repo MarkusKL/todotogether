@@ -11,3 +11,7 @@ Template.formCreateList.events
             return
         Meteor.call "createList", name.val()
         name.val ""
+
+Template.navbar.helpers
+    'isRoute': (name)->
+        return if Router.current().route.getName() is name then 'active' else ''
