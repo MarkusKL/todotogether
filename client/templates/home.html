@@ -1,17 +1,26 @@
 
 <template name="home">
-    <h3>Dine lister:</h3>
 
-    <div style="max-width: 300px">
-        {{> listsList}}
-    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"> Dine Lister </h4>
+            </div>
+            <div class="panel-body">
+                {{> listsList}}
+            </div>
+        </div>
 
-    <h3>Ny liste:</h3>
-    <div style="max-width: 300px;">
-        {{> formCreateList}}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"> Opret liste </h4>
+            </div>
+            <div class="panel-body">
+                {{> formCreateList}}
+            </div>
+        </div>
+        {{> formLogout}}
     </div>
-    <br>
-    {{> formLogout}}
 </template>
 
 <template name="listsList">
