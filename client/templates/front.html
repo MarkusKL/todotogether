@@ -9,7 +9,7 @@
                 Velkommen til ToDo Together
             </div>
             <div class="panel-body">
-                body
+                {{> principles}}
             </div>
         </div>
     </div>
@@ -22,5 +22,45 @@
                 <center>{{> formLogin}}</center>
             </div>
         </div>
+    </div>
+</template>
+
+<template name="principles">
+    <center>”Gør hverdagen nemmere sammen”</center>
+    <div class="principle">
+        <div class="bullet">
+            <span class="glyphicon glyphicon-list-alt"></span>
+        </div>
+        Listerne er dynamiske og kan ændres hvor og når som helst.
+    </div>
+    <div class="principle">
+        <div class="bullet">
+            <span class="glyphicon glyphicon-ok-sign"></span>
+        </div>
+        Prioriter dine opgaver, og kryds dem af når de er blevet løst
+    </div>
+    <div class="principle">
+        <div class="bullet">
+            <span class="glyphicon glyphicon-duplicate"></span>
+        </div>
+        Lav så mange lister du vil
+    </div>
+    <div class="principle">
+        <div class="bullet">
+            <span class="glyphicon glyphicon-hourglass"></span>
+        </div>
+        Maximer tiden, uddeleger og få overblik over dagens pligter
+    </div>
+    <div class="principle">
+        <div class="bullet">
+            <span class="glyphicon glyphicon-user"></span>
+        </div>
+        Del dine lister med familien og venner, og hjælp hinanden
+    </div>
+    <div class="principle">
+        <div class="bullet">
+            <span class="glyphicon glyphicon-home"></span>
+        </div>
+        Nu kan hele familien arbejde sammen, og bruger mere tid på hinanden
     </div>
 </template>

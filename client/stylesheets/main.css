@@ -28,3 +28,15 @@ body {
 .navbar-hover:hover {
     background-color: #DDD;
 }
+
+.principle {
+    margin-top: 16px;
+    min-height: 40px;
+}
+
+.bullet {
+    float: left;
+    font-size: 24px;
+    padding: 8px;
+    color: #383;
+}
