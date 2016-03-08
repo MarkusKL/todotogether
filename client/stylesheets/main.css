@@ -1,6 +1,6 @@
 body {
     min-height: 100%;
-    background-color: #DDD; 
+    background-color: #DDD;
 }
 
 .modeCreateOnly {
@@ -8,8 +8,7 @@ body {
 }
 
 .list-item {
-    border: 3px double black;
-    margin-bottom: -3px;
+    padding: 3px;
     position: relative;
 }
 .list-item.animate {

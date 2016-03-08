@@ -1,16 +1,19 @@
 <template name="list">
     <h2> Listen {{list.name}} </h2>
-    <a href="/"> Tilbage </a><br/>
+    <a href="/" class="btn btn-default">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Tilbage
+    </a><br/><br/>
     {{> itemsList}}
     {{> accessList}}
 </template>
 
 <template name="itemsList">
-    <ul style="width: 400px;" class="wrapper">
+    <div style="width: 400px;" class="wrapper list-group">
     {{#each items}}
         {{> item}}
     {{/each}}
-    </ul>
+    </div>
     <form id="formAdd">
         <input type="text" name="text">
         <button type="submit">+</button>
@@ -18,13 +21,13 @@
 </template>
 
 <template name="item">
-    <li class="list-item animate">
+    <li class="list-group-item list-item animate">
         <input class="checkInput" type="checkbox" {{checkedState}}>
         <input class="priorityInput" value="{{priority}}">
             :
         <input class="itemText" value="{{text}}">
-        <span class="removeItem" style="float: right;cursor: pointer;">
-            x
+        <span class="removeItem badge" style="cursor: pointer;">
+            <span class="glyphicon glyphicon-remove"></span>
         </span>
     </li>
 </template>
