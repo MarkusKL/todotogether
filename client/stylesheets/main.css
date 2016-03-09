@@ -10,6 +10,7 @@ body {
 .list-item {
     padding: 3px;
     position: relative;
+    display: flex;
 }
 .list-item.animate {
     transition:all 300ms 0ms ease-in-out;
@@ -22,7 +23,8 @@ body {
 
 .itemText {
     border: 0;
-    width: 256px;
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .navbar-hover:hover {

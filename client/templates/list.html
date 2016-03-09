@@ -1,30 +1,38 @@
 <template name="list">
-    <h2> Listen {{list.name}} </h2>
-    <a href="/" class="btn btn-default">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        Tilbage
-    </a><br/><br/>
-    {{> itemsList}}
-    {{> accessList}}
+    <div class="col-sm-6">
+        <a href="/" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Tilbage
+        </a><br/><br/>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"> {{list.name}} </h4>
+            </div>
+            <div class="panel-body">
+                {{> itemsList}}
+            </div>
+        </div>
+        {{> accessList}}
+    </div>
 </template>
 
 <template name="itemsList">
-    <div style="width: 400px;" class="wrapper list-group">
-    {{#each items}}
-        {{> item}}
-    {{/each}}
+    <div class="wrapper list-group">
+        {{#each items}}
+            {{> item}}
+        {{/each}}
+        <li class="list-group-item list-item"><form id="formAdd">
+            <input type="text" name="text">
+            <button type="submit">+</button>
+        </form></li>
     </div>
-    <form id="formAdd">
-        <input type="text" name="text">
-        <button type="submit">+</button>
-    </form>
 </template>
 
 <template name="item">
     <li class="list-group-item list-item animate">
         <input class="checkInput" type="checkbox" {{checkedState}}>
         <input class="priorityInput" value="{{priority}}">
-            :
+        :
         <input class="itemText" value="{{text}}">
         <span class="removeItem badge" style="cursor: pointer;">
             <span class="glyphicon glyphicon-remove"></span>
