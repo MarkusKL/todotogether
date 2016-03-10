@@ -9,15 +9,17 @@
 <template name="layout">
     {{#if currentUser}}
         {{> navbar}}
+        <div class="container">
+            <div class="col-sm-6">
+                {{> home}}
+            </div>
+            <div class="col-sm-6">
+                {{> yield}}
+            </div>
+        </div>
+    {{else}}
+        {{> yield}}
     {{/if}}
-    <div class="container">
-        <div class="col-sm-6">
-            {{> home}}
-        </div>
-        <div class="col-sm-6">
-            {{> yield}}
-        </div>
-    </div>
 </template>
 
 <template name="loading">
