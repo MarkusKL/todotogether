@@ -13,7 +13,7 @@ Router.route '/',
         this.next()
 
 Router.route '/home',
-    name: 'home'
+    name: 'overview'
 
 Router.route '/list/:_id',
     name: 'list'

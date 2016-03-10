@@ -1,7 +1,8 @@
 
 <template name="home">
-    {{> panelListsList}}
+    {{> panelOverviewLink}}
     {{> panelCreateList}}
+    {{> panelListsList}}
     {{> formLogout}}
 </template>
 
@@ -39,5 +40,32 @@
         <div class="panel-body">
             {{> formCreateList}}
         </div>
+    </div>
+</template>
+
+<template name="overview">
+    {{> panelItemCollection}}
+</template>
+
+<template name="panelItemCollection">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"> Samlet liste</h4>
+        </div>
+        <div class="panel-body">
+            text
+        </div>
+    </div>
+</template>
+
+<template name="panelOverviewLink">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4 class="panel-title"> Overblikket </h4>
+        </div>
+        <div class="panel-body"><center>
+            Få et overblik over de opgaver du har <br>
+            <a href='/home' class="btn btn-success"> Overblik </a>
+        </center></div>
     </div>
 </template>

@@ -18,12 +18,14 @@
             </div>
         </div>
     {{else}}
-        {{> yield}}
+        <div class="container">
+            {{> yield}}
+        </div>
     {{/if}}
 </template>
 
 <template name="loading">
-    Loading...
+    {{> spinner}}
 </template>
 
 <template name="notFound">
