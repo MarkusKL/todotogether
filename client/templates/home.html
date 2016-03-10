@@ -1,35 +1,45 @@
 
 <template name="home">
-
     <div class="col-sm-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title"> Dine Lister </h4>
-            </div>
-            <div class="panel-body">
-                {{> listsList}}
-            </div>
-        </div>
+        {{> panelListsList}}
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title"> Opret liste </h4>
-            </div>
-            <div class="panel-body">
-                {{> formCreateList}}
-            </div>
-        </div>
+        {{> panelCreateList}}
+
         {{> formLogout}}
     </div>
 </template>
 
-<template name="listsList">
-    <div class="list-group">
-    {{#each lists}}
-        <a href="/list/{{_id}}" class="list-group-item">
-            {{name}}
-            <span class="badge"><span class="glyphicon glyphicon-chevron-right"></span></span>
-        </a>
-    {{/each}}
-</div>
+<template name="panelListsList">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"> Dine Lister </h4>
+        </div>
+        <div class="panel-body">
+            {{#if Template.subscriptionsReady}}
+                <div class="list-group">
+                    {{#each lists}}
+                        <a href="/list/{{_id}}" class="list-group-item">
+                            {{name}}
+                            <span class="badge">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </span>
+                        </a>
+                    {{/each}}
+                </div>
+            {{else}}
+                {{> spinner}}
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="panelCreateList">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"> Opret liste </h4>
+        </div>
+        <div class="panel-body">
+            {{> formCreateList}}
+        </div>
+    </div>
 </template>

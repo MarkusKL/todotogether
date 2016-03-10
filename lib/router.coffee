@@ -14,8 +14,6 @@ Router.route '/',
 
 Router.route '/home',
     name: 'home'
-    waitOn: ->
-        Meteor.subscribe "lists"
 
 Router.route '/list/:_id',
     name: 'list'

@@ -1,5 +1,5 @@
 
-Template.listsList.helpers
+Template.panelListsList.helpers
     lists: -> Lists.find()
 
 Template.formCreateList.events
@@ -15,3 +15,6 @@ Template.formCreateList.events
 Template.navbar.helpers
     'isRoute': (name)->
         return if Router.current().route.getName() is name then 'active' else ''
+
+Template.panelListsList.onCreated ->
+    this.subscribe('lists')
