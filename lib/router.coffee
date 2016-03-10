@@ -16,10 +16,9 @@ Router.route '/home',
     name: 'overview'
 
 Router.route '/list/:_id',
-    name: 'list'
-    waitOn: ->
-        Meteor.subscribe "list", this.params._id
+    name: 'panelList'
     data: ->
+        listId: this.params._id
         list: Lists.findOne this.params._id
         items: Items.find {
             listId: this.params._id

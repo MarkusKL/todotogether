@@ -18,45 +18,6 @@ Template.itemsList.events
             text.val()
         text.val("")
 
-Template.itemsList.onRendered ->
-    this.find('.wrapper')._uihooks =
-        insertElement: (node, next) ->
-            $(node)
-                .hide()
-                .insertBefore(next)
-                .fadeIn()
-        moveElement: (node, next) ->
-            $node = $ node
-            $next = $ next
-            oldTop = $node.offset().top
-            height = $node.outerHeight(true)
-
-            $inBetween = $next.nextUntil(node)
-            if $node.index() < $next.index()
-                $inBetween = $next.prevUntil(node)
-
-            $node.insertBefore(next)
-            newTop = $node.offset().top
-
-            $node
-                .removeClass('animate')
-                .css('top', oldTop - newTop)
-
-            $inBetween
-                .removeClass('animate')
-                .css('top', if oldTop < newTop then height else -1*height)
-
-            $node.offset()
-
-            $node.addClass('animate').css('top',0)
-            $inBetween.addClass('animate').css('top',0)
-
-        removeElement: (node) ->
-            $node = $ node
-            $node.removeClass("animate")
-            $node.animate({marginBottom: (-$node.outerHeight(true))+"px"}, ->
-                $node.remove())
-
 Template.item.events
     'click .removeItem': (e) ->
         Meteor.call "removeItem", this._id
@@ -88,7 +49,7 @@ Template.item.events
         if e.which is 13 or e.keyCode is 13
             Template.instance().$('input.priorityInput').blur()
 
-Template.list.events
+Template.panelList.events
     'submit #formGiveAccess': (e) ->
         e.preventDefault()
         form = $ '#formGiveAccess'
@@ -103,6 +64,13 @@ Template.list.events
     'click .deleteListButton': (e) ->
         Meteor.call "deleteList", this.list._id
         Router.go('/') # Antipattern?
+
+Template.panelList.onCreated ->
+    self = this
+    self.autorun ->
+        listId = Template.currentData().listId
+        self.subscribe "list", listId
+
 
 Template.accessList.helpers
     'isCreator': ->
