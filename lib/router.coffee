@@ -26,6 +26,12 @@ Router.route '/list/:_id',
             sort: [["checked","asc"],["priority","desc"],["created","asc"]]
         }
         users: Meteor.users.find()
+    action: ->
+        Session.set 'listRerender', false
+        Meteor.setTimeout( ->
+            Session.set 'listRerender', true
+        , 0)
+        this.render()
 
 requireLogin = ->
     if Meteor.loggingIn()

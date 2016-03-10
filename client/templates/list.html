@@ -1,4 +1,5 @@
 <template name="panelList">
+    {{#if listRerender}}
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title"> {{list.name}} </h4>
@@ -8,6 +9,7 @@
         </div>
     </div>
     {{> accessList}}
+    {{/if}}
 </template>
 
 <template name="itemsList">

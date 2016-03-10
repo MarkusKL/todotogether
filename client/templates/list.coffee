@@ -65,6 +65,10 @@ Template.panelList.events
         Meteor.call "deleteList", this.list._id
         Router.go('/') # Antipattern?
 
+Template.panelList.helpers
+    'listRerender': ->
+        Session.get 'listRerender'
+
 Template.panelList.onCreated ->
     self = this
     self.autorun ->
