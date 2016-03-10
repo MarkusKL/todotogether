@@ -1,19 +1,17 @@
 <template name="list">
-    <div class="col-sm-6">
-        <a href="/" class="btn btn-default">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            Tilbage
-        </a><br/><br/>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title"> {{list.name}} </h4>
-            </div>
-            <div class="panel-body">
-                {{> itemsList}}
-            </div>
+    <a href="/" class="btn btn-default">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Tilbage
+    </a><br/><br/>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"> {{list.name}} </h4>
         </div>
-        {{> accessList}}
+        <div class="panel-body">
+            {{> itemsList}}
+        </div>
     </div>
+    {{> accessList}}
 </template>
 
 <template name="itemsList">

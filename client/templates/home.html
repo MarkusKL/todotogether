@@ -1,12 +1,8 @@
 
 <template name="home">
-    <div class="col-sm-6">
-        {{> panelListsList}}
-
-        {{> panelCreateList}}
-
-        {{> formLogout}}
-    </div>
+    {{> panelListsList}}
+    {{> panelCreateList}}
+    {{> formLogout}}
 </template>
 
 <template name="panelListsList">
@@ -27,7 +23,9 @@
                     {{/each}}
                 </div>
             {{else}}
-                {{> spinner}}
+                <div class="spinner-wrapper">
+                    {{> spinner}}
+                </div>
             {{/if}}
         </div>
     </div>
