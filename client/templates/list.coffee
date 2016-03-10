@@ -54,9 +54,8 @@ Template.itemsList.onRendered ->
         removeElement: (node) ->
             $node = $ node
             $node.removeClass("animate")
-            $node.animate({opacity: 0,left: "50px"}, ->
-                $node.animate({marginTop: (-$node.outerHeight(true))+"px"}, ->
-                    $node.remove()))
+            $node.animate({marginBottom: (-$node.outerHeight(true))+"px"}, ->
+                $node.remove())
 
 Template.item.events
     'click .removeItem': (e) ->
