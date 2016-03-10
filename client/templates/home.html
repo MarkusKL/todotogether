@@ -11,9 +11,9 @@
         <div class="panel-heading">
             <h4 class="panel-title"> Dine Lister </h4>
         </div>
-        <div class="panel-body">
+        <div class="panel-body list-panel-body">
             {{#if Template.subscriptionsReady}}
-                <div class="list-group">
+                <div class="list-group panel-list">
                     {{#each lists}}
                         <a href="/list/{{_id}}" class="list-group-item {{classCurrentList}}">
                             {{name}}

@@ -4,7 +4,7 @@
         <div class="panel-heading">
             <h4 class="panel-title"> {{list.name}} </h4>
         </div>
-        <div class="panel-body">
+        <div class="panel-body list-panel-body">
             {{> itemsList}}
         </div>
     </div>
@@ -12,7 +12,7 @@
 </template>
 
 <template name="itemsList">
-    <div class="wrapper list-group">
+    <div class="wrapper list-group panel-list">
         {{#each items}}
             {{> item}}
         {{/each}}

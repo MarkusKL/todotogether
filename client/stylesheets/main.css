@@ -59,3 +59,16 @@ body {
     top: 0;
     width: 100%
 }
+
+.panel-list {
+    margin-bottom: 0;
+}
+
+.list-panel-body {
+    padding: 0;
+}
+
+.panel-list>*:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

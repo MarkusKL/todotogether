@@ -2,7 +2,8 @@
 Template.panelListsList.helpers
     lists: -> Lists.find()
     classCurrentList: ->
-        if this._id is Template.parentData().listId then 'list-group-item-success' else ''
+        if Template.parentData()
+            if this._id is Template.parentData().listId then 'list-group-item-success' else ''
 
 Template.formCreateList.events
     'submit #formNewList': (e) ->
