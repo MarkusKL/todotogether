@@ -49,3 +49,8 @@ body {
     padding-top: 32px;
     padding-bottom: 32px
 }
+
+.option-cog {
+    float: right;
+    cursor: pointer;
+}

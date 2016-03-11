@@ -72,7 +72,7 @@ Template.panelList.onCreated ->
         self.subscribe "list", listId
 
 
-Template.accessList.helpers
+Template.panelListSettings.helpers
     'isCreator': ->
         this.list.creator is Meteor.userId()
 
