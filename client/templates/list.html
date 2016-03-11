@@ -1,6 +1,6 @@
 <template name="panelList">
     {{#if listRerender}}
-    <div class="panel panel-default">
+    <div class="panel panel-info">
         <div class="panel-heading">
             <h4 class="panel-title">
                 {{list.name}}
@@ -21,10 +21,18 @@
         {{#each items}}
             {{> item}}
         {{/each}}
-        <li class="list-group-item list-item"><form id="formAdd">
-            <input type="text" name="text">
-            <button type="submit">+</button>
-        </form></li>
+        <li class="list-group-item list-item">
+            <form id="formAdd">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="text" placeholder="...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="submit">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </li>
     </div>
 </template>
 
