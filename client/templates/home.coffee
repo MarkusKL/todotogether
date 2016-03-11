@@ -1,5 +1,5 @@
 
-Template.panelListsList.helpers
+Template.panelListsListBody.helpers
     lists: -> Lists.find()
     classCurrentList: ->
         if Template.parentData()

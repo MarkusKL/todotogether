@@ -11,22 +11,28 @@
         </div>
         <div class="panel-body list-panel-body">
             {{#if Template.subscriptionsReady}}
-                <div class="list-group panel-list">
-                    {{#each lists}}
-                        <a href="/list/{{_id}}" class="list-group-item {{classCurrentList}}">
-                            {{name}}
-                            <span class="badge">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </span>
-                        </a>
-                    {{/each}}
-                </div>
+                {{> panelListsListBody}}
             {{else}}
                 <div class="spinner-wrapper">
                     {{> spinner}}
                 </div>
             {{/if}}
         </div>
+    </div>
+</template>
+
+<template name="panelListsListBody">
+    <div class="list-group panel-list wrapper">
+        {{#each lists}}
+            <a href="/list/{{_id}}" class="list-group-item list-item {{classCurrentList}} animate">
+                <span class="itemText">
+                    {{name}}
+                </span>
+                <span class="badge">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </span>
+            </a>
+        {{/each}}
     </div>
 </template>
 
@@ -40,9 +46,9 @@
             <h4 class="panel-title"> Samlet liste</h4>
         </div>
         <div class="panel-body list-panel-body">
-            <div class="list-group panel-list">
+            <div class="list-group panel-list wrapper">
                 {{#each items}}
-                    <a href="/list/{{listId}}" class="list-group-item list-item">
+                    <a href="/list/{{listId}}" class="list-group-item list-item animate">
                         <span class="itemText">{{text}}</span>
                         <span class="badge">{{priority}}</span>
                     </a>
