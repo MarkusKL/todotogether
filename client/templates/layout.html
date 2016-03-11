@@ -22,8 +22,10 @@
         <div class="col-sm-6">
             {{> home}}
         </div>
-        <div class="col-sm-6" id="main">
-            {{> yield}}
+        <div class="col-sm-6">
+            <div id="main">
+                {{> yield}}
+            </div>
         </div>
     </div>
 </template>
@@ -44,20 +46,6 @@
                     {{> ToDoTogether}}
                 </a>
             </div>
-            <ul class="nav navbar-nav navbar-left">
-                <li class="navbar-hover {{isRoute 'home'}}">
-                    <a href="/home">
-                        <span class="glyphicon glyphicon-home"></span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="navbar-hover">
-                    <a href='#'>
-                        {{currentUser.username}}
-                    </a>
-                </li>
-            </ul>
         </div>
     </nav>
 </template>

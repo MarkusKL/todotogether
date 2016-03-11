@@ -1,9 +1,7 @@
 
 <template name="home">
     {{> panelOverviewLink}}
-    {{> panelCreateList}}
     {{> panelListsList}}
-    {{> formLogout}}
 </template>
 
 <template name="panelListsList">
@@ -32,17 +30,6 @@
     </div>
 </template>
 
-<template name="panelCreateList">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title"> Opret liste </h4>
-        </div>
-        <div class="panel-body">
-            {{> formCreateList}}
-        </div>
-    </div>
-</template>
-
 <template name="overview">
     {{> panelItemCollection}}
 </template>
@@ -61,11 +48,24 @@
 <template name="panelOverviewLink">
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h4 class="panel-title"> Overblikket </h4>
+            <h4 class="panel-title"> Info </h4>
         </div>
         <div class="panel-body"><center>
-            Få et overblik over de opgaver du har <br>
+            Velkommen {{currentUser.username}} til ToDo Together <br>
+            <a href='/profile' class="btn btn-success disabled" style="margin-right: 16px;">
+                Profil
+            </a>
+            {{> formLogout}}
+            <hr>
+            Opret en ny liste
+            {{> formCreateList}} <br>
+            <hr>
+            Få et overblik over dine nuværende opgaver <br>
             <a href='/home' class="btn btn-success"> Overblik </a>
+            <br>
+            <hr>
+            Se kildekoden på <br>
+            <a href='https://github.com/MarkusKL/todotogether' class="btn btn-success">GitHub</a>
         </center></div>
     </div>
 </template>
