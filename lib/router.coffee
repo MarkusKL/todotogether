@@ -33,6 +33,10 @@ Router.route '/list/:_id',
         , 0)
         this.render()
 
+Router.route '/list/:_id/settings',
+    name: 'settings'
+
+
 requireLogin = ->
     if Meteor.loggingIn()
         this.render this.loadingTemplate
