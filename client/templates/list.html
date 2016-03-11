@@ -4,8 +4,9 @@
         <div class="panel-heading">
             <h4 class="panel-title">
                 {{list.name}}
-                <a href="{{pathFor route='settings' data=list}}"><span class="glyphicon glyphicon-cog option-cog">
-                </span></a>
+                <a href="{{pathFor route='settings' data=list}}">
+                    <span class="glyphicon glyphicon-cog option-cog"></span>
+                </a>
             </h4>
         </div>
         <div class="panel-body list-panel-body">
@@ -37,37 +38,4 @@
             <span class="glyphicon glyphicon-remove"></span>
         </span>
     </li>
-</template>
-
-<template name="settings">
-    {{> panelListSettings}}
-</template>
-
-<template name="panelListSettings">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            {{list.name}}
-        </div>
-        <div class="panel-body">
-            <h3> Giv andre adgang </h3>
-            Andre med adgang:
-            <ul>
-                {{#each list.access}}
-                {{> userItem}}
-                {{/each}}
-            </ul>
-            {{#if isCreator}}
-            <form id="formGiveAccess">
-                <input type="text" name="username" placeholder="Brugernavn">
-                <button type="submit">Giv adgang</button>
-            </form>
-            <br/>
-            <button class="deleteListButton btn btn-danger">Slet listen</button>
-            {{/if}}
-        </div>
-    </div>
-</template>
-
-<template name="userItem">
-    <li>{{username}}</li>
 </template>

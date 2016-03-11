@@ -35,7 +35,10 @@ Router.route '/list/:_id',
 
 Router.route '/list/:_id/settings',
     name: 'settings'
-
+    data: ->
+        listId: this.params._id
+        list: Lists.findOne this.params._id
+        users: Meteor.users.find()
 
 requireLogin = ->
     if Meteor.loggingIn()

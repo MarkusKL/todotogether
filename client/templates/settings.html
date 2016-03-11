@@ -1,0 +1,41 @@
+<template name="settings">
+    {{> panelListSettings}}
+</template>
+
+<template name="panelListSettings">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                {{list.name}}
+                <a href="{{pathFor route='panelList' data=list}}">
+                    <span class="glyphicon glyphicon-th-list option-cog"></span>
+                </a>
+            </h4>
+        </div>
+        <div class="panel-body">
+            <h3> Indstillinger </h3>
+            Andre med adgang til denne liste
+            <div class="list-group">
+                {{#each list.access}}
+                {{> userItem}}
+                {{/each}}
+            </div>
+            {{#if isCreator}}
+            <form id="formGiveAccess">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="username" placeholder="Brugernavn">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info">Giv adgang</button>
+                    </span>
+                </div>
+            </form>
+            <br/>
+            <button class="deleteListButton btn btn-danger">Slet listen</button>
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="userItem">
+    <li class="list-group-item">{{username}}<span class="glyphicon glyphicon-remove revoke {{classRevokeAccess}}"></span></li>
+</template>

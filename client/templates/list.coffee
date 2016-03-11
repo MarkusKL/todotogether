@@ -49,7 +49,7 @@ Template.item.events
         if e.which is 13 or e.keyCode is 13
             Template.instance().$('input.priorityInput').blur()
 
-Template.panelList.events
+Template.panelListSettings.events
     'submit #formGiveAccess': (e) ->
         e.preventDefault()
         form = $ '#formGiveAccess'
@@ -89,9 +89,12 @@ Template.userItem.helpers
         if usr.length > 0
             return usr[0].username
         return undefined
+    'classRevokeAccess': ->
+        creator = Template.parentData().list.creator
+        if Meteor.userId() is creator and this.valueOf() isnt creator then '' else 'revoke-hidden'
 
 Template.userItem.events
-    'click li': ->
+    'click .revoke': ->
         Meteor.call(
             "revokeAccess",
             Template.parentData().list._id,

@@ -77,3 +77,13 @@ body {
     float: right;
     cursor: pointer;
 }
+
+.revoke-hidden {
+    display: none;
+}
+
+.revoke {
+    float: right;
+    cursor: pointer;
+    color: #D9534F;
+}
