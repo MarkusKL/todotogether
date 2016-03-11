@@ -29,3 +29,11 @@ Template.userLayout.onRendered ->
         removeElement: (node) ->
             $(node).fadeOut ->
                 $(this).remove()
+
+Template.panelItemCollection.helpers
+    'items': ->
+        Items.find {
+            checked: false
+        }, {
+            sort: [["priority","desc"],["created","asc"]]
+        }

@@ -14,6 +14,8 @@ Router.route '/',
 
 Router.route '/home',
     name: 'overview'
+    subscriptions: ->
+        Meteor.subscribe('allItems')
 
 Router.route '/list/:_id',
     name: 'panelList'

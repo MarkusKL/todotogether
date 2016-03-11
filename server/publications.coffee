@@ -32,6 +32,20 @@ Meteor.publish "me", ->
     else
         return []
 
+Meteor.publish 'allItems', ->
+    if !this.userId
+        return []
+    # The listIds are not reaktive
+    listIds = _.pluck(Lists.find({
+        access: $all: [this.userId]
+    }, {
+        _id: 1
+    }).fetch(),'_id')
+
+    Items.find
+        listId: $in: listIds
+
+
 Meteor.publish "userInfo", (userId) ->
     check userId, String
     return Meteor.users.find {

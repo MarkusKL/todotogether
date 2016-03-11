@@ -35,12 +35,19 @@
 </template>
 
 <template name="panelItemCollection">
-    <div class="panel panel-default">
+    <div class="panel panel-success">
         <div class="panel-heading">
             <h4 class="panel-title"> Samlet liste</h4>
         </div>
-        <div class="panel-body">
-            text
+        <div class="panel-body list-panel-body">
+            <div class="list-group panel-list">
+                {{#each items}}
+                    <a href="/list/{{listId}}" class="list-group-item list-item">
+                        <span class="itemText">{{text}}</span>
+                        <span class="badge">{{priority}}</span>
+                    </a>
+                {{/each}}
+            </div>
         </div>
     </div>
 </template>
