@@ -37,3 +37,18 @@ Template.panelItemCollection.helpers
         }, {
             sort: [["priority","desc"],["created","asc"]]
         }
+
+Errors.show = (text) ->
+    if(!text)
+        return
+    Blaze.renderWithData Template.error, text: text, document.getElementById "errors"
+
+Template.error.onRendered ->
+    div = $ '.error-msg'
+    height = (-div.outerHeight(true))+"px"
+    div
+        .css('top', height)
+        .animate({top: 0}, "ease-out")
+        .delay(3000)
+        .animate({top: height}, "ease-in", ->
+            $(this).remove())

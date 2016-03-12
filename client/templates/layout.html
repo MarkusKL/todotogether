@@ -14,6 +14,16 @@
             {{> yield}}
         </div>
     {{/if}}
+    <div id="errors" style="position: absolute;">
+    </div>
+</template>
+
+<template name="error">
+    <div class="error-msg">
+        <span class="label label-danger">
+            {{text}}
+        </span>
+    </div>
 </template>
 
 <template name="userLayout">
