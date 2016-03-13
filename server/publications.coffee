@@ -1,4 +1,10 @@
 
+Meteor.startup ->
+    Items._ensureIndex
+        listId: 1
+    Lists._ensureIndex
+        access: 1
+
 Meteor.publish "lists", ->
     if this.userId
         return Lists.find
