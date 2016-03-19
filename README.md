@@ -1,6 +1,6 @@
 # ToDo Together
 
-[https://todotogether.meteor.com](https://todotogether.meteor.com)
+[Se det live](http://todotogether.krabbelarsen.dk)
 
 Produktet af et teknologi projekt lavet i meteor
 
